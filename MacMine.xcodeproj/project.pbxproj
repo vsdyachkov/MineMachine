@@ -11,16 +11,22 @@
 		77651FF622D2AA9C00DFE4F1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77651FF522D2AA9C00DFE4F1 /* ViewController.swift */; };
 		77651FF822D2AA9F00DFE4F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77651FF722D2AA9F00DFE4F1 /* Assets.xcassets */; };
 		77651FFB22D2AA9F00DFE4F1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77651FF922D2AA9F00DFE4F1 /* Main.storyboard */; };
+		77D79D6322DBBFC9008F585D /* Analyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D79D6222DBBFC9008F585D /* Analyzer.swift */; };
+		77ED16B522D37A5200CB1235 /* GridModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77ED16B422D37A5200CB1235 /* GridModel.swift */; };
+		77ED16B722D37C4F00CB1235 /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77ED16B622D37C4F00CB1235 /* CellView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		77651FF022D2AA9C00DFE4F1 /* StackTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StackTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		77651FF022D2AA9C00DFE4F1 /* MacMine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacMine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77651FF322D2AA9C00DFE4F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		77651FF522D2AA9C00DFE4F1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		77651FF722D2AA9F00DFE4F1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		77651FFA22D2AA9F00DFE4F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		77651FFC22D2AA9F00DFE4F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		77651FFD22D2AA9F00DFE4F1 /* StackTest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StackTest.entitlements; sourceTree = "<group>"; };
+		77651FFD22D2AA9F00DFE4F1 /* MacMine.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MacMine.entitlements; sourceTree = "<group>"; };
+		77D79D6222DBBFC9008F585D /* Analyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Analyzer.swift; sourceTree = "<group>"; };
+		77ED16B422D37A5200CB1235 /* GridModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridModel.swift; sourceTree = "<group>"; };
+		77ED16B622D37C4F00CB1235 /* CellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -34,10 +40,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7756528F22D532950088CBD7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				77651FF322D2AA9C00DFE4F1 /* AppDelegate.swift */,
+				77651FF922D2AA9F00DFE4F1 /* Main.storyboard */,
+				77651FF722D2AA9F00DFE4F1 /* Assets.xcassets */,
+				77651FFC22D2AA9F00DFE4F1 /* Info.plist */,
+				77651FFD22D2AA9F00DFE4F1 /* MacMine.entitlements */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		77651FE722D2AA9C00DFE4F1 = {
 			isa = PBXGroup;
 			children = (
-				77651FF222D2AA9C00DFE4F1 /* StackTest */,
+				77651FF222D2AA9C00DFE4F1 /* MacMine */,
+				7756528F22D532950088CBD7 /* Supporting Files */,
 				77651FF122D2AA9C00DFE4F1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -45,30 +64,28 @@
 		77651FF122D2AA9C00DFE4F1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				77651FF022D2AA9C00DFE4F1 /* StackTest.app */,
+				77651FF022D2AA9C00DFE4F1 /* MacMine.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		77651FF222D2AA9C00DFE4F1 /* StackTest */ = {
+		77651FF222D2AA9C00DFE4F1 /* MacMine */ = {
 			isa = PBXGroup;
 			children = (
-				77651FF322D2AA9C00DFE4F1 /* AppDelegate.swift */,
 				77651FF522D2AA9C00DFE4F1 /* ViewController.swift */,
-				77651FF722D2AA9F00DFE4F1 /* Assets.xcassets */,
-				77651FF922D2AA9F00DFE4F1 /* Main.storyboard */,
-				77651FFC22D2AA9F00DFE4F1 /* Info.plist */,
-				77651FFD22D2AA9F00DFE4F1 /* StackTest.entitlements */,
+				77ED16B422D37A5200CB1235 /* GridModel.swift */,
+				77ED16B622D37C4F00CB1235 /* CellView.swift */,
+				77D79D6222DBBFC9008F585D /* Analyzer.swift */,
 			);
-			path = StackTest;
+			path = MacMine;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		77651FEF22D2AA9C00DFE4F1 /* StackTest */ = {
+		77651FEF22D2AA9C00DFE4F1 /* MacMine */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7765200022D2AA9F00DFE4F1 /* Build configuration list for PBXNativeTarget "StackTest" */;
+			buildConfigurationList = 7765200022D2AA9F00DFE4F1 /* Build configuration list for PBXNativeTarget "MacMine" */;
 			buildPhases = (
 				77651FEC22D2AA9C00DFE4F1 /* Sources */,
 				77651FED22D2AA9C00DFE4F1 /* Frameworks */,
@@ -78,9 +95,9 @@
 			);
 			dependencies = (
 			);
-			name = StackTest;
+			name = MacMine;
 			productName = StackTest;
-			productReference = 77651FF022D2AA9C00DFE4F1 /* StackTest.app */;
+			productReference = 77651FF022D2AA9C00DFE4F1 /* MacMine.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -95,10 +112,15 @@
 				TargetAttributes = {
 					77651FEF22D2AA9C00DFE4F1 = {
 						CreatedOnToolsVersion = 10.2.1;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
-			buildConfigurationList = 77651FEB22D2AA9C00DFE4F1 /* Build configuration list for PBXProject "StackTest" */;
+			buildConfigurationList = 77651FEB22D2AA9C00DFE4F1 /* Build configuration list for PBXProject "MacMine" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -111,7 +133,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				77651FEF22D2AA9C00DFE4F1 /* StackTest */,
+				77651FEF22D2AA9C00DFE4F1 /* MacMine */,
 			);
 		};
 /* End PBXProject section */
@@ -133,8 +155,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77ED16B722D37C4F00CB1235 /* CellView.swift in Sources */,
 				77651FF622D2AA9C00DFE4F1 /* ViewController.swift in Sources */,
+				77D79D6322DBBFC9008F585D /* Analyzer.swift in Sources */,
 				77651FF422D2AA9C00DFE4F1 /* AppDelegate.swift in Sources */,
+				77ED16B522D37A5200CB1235 /* GridModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,16 +296,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = StackTest/StackTest.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = TFCP6F78C7;
-				INFOPLIST_FILE = StackTest/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.isimplelab.pushTest.StackTest;
+				PRODUCT_BUNDLE_IDENTIFIER = com.isimplelab.macMine;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -290,16 +314,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = StackTest/StackTest.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = TFCP6F78C7;
-				INFOPLIST_FILE = StackTest/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.isimplelab.pushTest.StackTest;
+				PRODUCT_BUNDLE_IDENTIFIER = com.isimplelab.macMine;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -308,7 +331,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		77651FEB22D2AA9C00DFE4F1 /* Build configuration list for PBXProject "StackTest" */ = {
+		77651FEB22D2AA9C00DFE4F1 /* Build configuration list for PBXProject "MacMine" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				77651FFE22D2AA9F00DFE4F1 /* Debug */,
@@ -317,7 +340,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7765200022D2AA9F00DFE4F1 /* Build configuration list for PBXNativeTarget "StackTest" */ = {
+		7765200022D2AA9F00DFE4F1 /* Build configuration list for PBXNativeTarget "MacMine" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7765200122D2AA9F00DFE4F1 /* Debug */,
