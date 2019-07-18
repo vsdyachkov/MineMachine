@@ -10,7 +10,7 @@ import Foundation
 
 class AIPlayer
 {
-    class public func playAnalyzed(gridModel:GridModel, gameDelegate:GameOverable?, infoDelegate:GameInfoProtocol?)
+    class public func playAnalyzed(gridModel:GridModel, gameDelegate:GameStatusProtocol?, infoDelegate:GameInfoProtocol?)
     {
         gridModel.grid.enumerate
         {

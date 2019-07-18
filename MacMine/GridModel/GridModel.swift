@@ -22,7 +22,7 @@ class GridModel {
     var height:Int!
     var mines:Int!
     var clickDelegate:Clickable?
-    var gameDelegate:GameOverable?
+    var gameDelegate:GameStatusProtocol?
     var infoDelegate:GameInfoProtocol?
 
     static let sharedInstance = GridModel()
@@ -31,18 +31,20 @@ class GridModel {
                       height: Int,
                       mines: Int,
                       clickDelegate:Clickable?,
-                      gameDelegate:GameOverable?,
+                      gameDelegate:GameStatusProtocol?,
                       infoDelegate:GameInfoProtocol?)
     {
-        GridModel.width = width
+        sharedInstance.width = width
         sharedInstance.height = height
         sharedInstance.mines = mines
         sharedInstance.clickDelegate = clickDelegate
         sharedInstance.gameDelegate = gameDelegate
         sharedInstance.infoDelegate = infoDelegate
+        
+        sharedInstance.generate()
     }
     
-    private init () {
+    public func generate () {
         
         guard (width != nil), (height != nil), (mines != nil) else {
             fatalError("Error - you must call setup before accessing MySingleton.shared")
@@ -52,11 +54,12 @@ class GridModel {
         
         let capacity = width * height
         var shuffledArray = [cellType]()
-        for i in 0...capacity { shuffledArray.append( i < mines ? .mine : .clear) }
+        for i in 0...capacity-1 { shuffledArray.append( i < mines ? .mine : .clear) }
         shuffledArray.shuffle()
         
         // итоговая матица с минами и пустыми клетками
  
+        grid = [[CellView]]()
         for x in 0...width-1 {
             grid.append([])
             for y in 0...height-1 {

@@ -113,7 +113,6 @@
 			children = (
 				7738712522DFEF1D002FE1EC /* Interface */,
 				77D79D6822DD1150008F585D /* GridModel */,
-				77D79D6D22DD1222008F585D /* CellView */,
 				7738712622DFEF3C002FE1EC /* AI */,
 			);
 			path = MacMine;
@@ -127,6 +126,7 @@
 				77D0B48922DF337800FD9C1D /* GridModel+Interactor.swift */,
 				77D79D6622DD10DB008F585D /* GridModel+Worker.swift */,
 				7738711F22DD29E0002FE1EC /* GridModel+Analyze.swift */,
+				77D79D6D22DD1222008F585D /* CellView */,
 			);
 			path = GridModel;
 			sourceTree = "<group>";

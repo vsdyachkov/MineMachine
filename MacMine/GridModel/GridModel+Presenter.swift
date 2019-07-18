@@ -27,8 +27,6 @@ extension GridModel
             for y in 0...grid[x].count-1 {
                 let cell = grid[x][y]
                 view.addSubview(cell)
-                cell.wantsLayer = true
-//                cell.updateLayer()
             }
         }
     }

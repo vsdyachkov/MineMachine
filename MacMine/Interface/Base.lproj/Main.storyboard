@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14835.7" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14835.7"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -162,8 +161,6 @@
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES"/>
                         <rect key="contentRect" x="254" y="239" width="1200" height="650"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
-                        <value key="minSize" type="size" width="1200" height="650"/>
-                        <value key="maxSize" type="size" width="1200" height="650"/>
                         <connections>
                             <outlet property="delegate" destination="B8D-0N-5wS" id="98r-iN-zZc"/>
                         </connections>
@@ -225,49 +222,56 @@
                         <rect key="frame" x="0.0" y="0.0" width="300" height="650"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bXc-je-NHl">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bXc-je-NHl">
                                 <rect key="frame" x="87" y="602" width="112" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="Новая игра" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="c1b-Kl-jr8">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
-                                    <connections>
-                                        <action selector="pushButton:" target="XfG-lQ-9wD" id="WYJ-dD-dv5"/>
-                                    </connections>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="newGameAction:" target="92v-3S-d4s" id="74I-Af-8Vb"/>
+                                </connections>
                             </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tRb-VH-PQU">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tRb-VH-PQU">
                                 <rect key="frame" x="117" y="584" width="41" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Label" id="YGF-xA-0k5">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JCN-O4-NlV">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JCN-O4-NlV">
                                 <rect key="frame" x="101" y="537" width="72" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="Help!" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="leC-7M-Vat">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="helpAction:" target="XfG-lQ-9wD" id="nC9-kl-jmN"/>
+                                    <action selector="helpAction:" target="92v-3S-d4s" id="Lp1-rR-sYF"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ACm-kB-yoa">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ACm-kB-yoa">
                                 <rect key="frame" x="97" y="498" width="81" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="AI Play" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="AfF-20-BD4">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="AIPlayAction:" target="XfG-lQ-9wD" id="Gfp-vb-pQA"/>
+                                    <action selector="AIPlayAction:" target="92v-3S-d4s" id="d3v-vX-Y4c"/>
                                 </connections>
                             </button>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="JCN-O4-NlV" firstAttribute="centerX" secondItem="ACm-kB-yoa" secondAttribute="centerX" id="4sX-dc-AMW"/>
+                            <constraint firstItem="bXc-je-NHl" firstAttribute="leading" secondItem="xJQ-P5-It2" secondAttribute="leading" constant="93" id="6vH-IO-Y7K"/>
+                            <constraint firstItem="ACm-kB-yoa" firstAttribute="top" secondItem="JCN-O4-NlV" secondAttribute="bottom" constant="18" id="8ZG-RQ-7q7"/>
+                            <constraint firstItem="tRb-VH-PQU" firstAttribute="top" secondItem="bXc-je-NHl" secondAttribute="bottom" constant="8" symbolic="YES" id="Kwc-zL-1tL"/>
+                            <constraint firstItem="JCN-O4-NlV" firstAttribute="leading" secondItem="xJQ-P5-It2" secondAttribute="leading" constant="107" id="LQs-Y9-rzq"/>
+                            <constraint firstItem="JCN-O4-NlV" firstAttribute="top" secondItem="xJQ-P5-It2" secondAttribute="top" constant="85" id="R03-AR-VpT"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="bXc-je-NHl" secondAttribute="trailing" constant="20" symbolic="YES" id="Zwh-DR-SCJ"/>
+                            <constraint firstItem="JCN-O4-NlV" firstAttribute="centerX" secondItem="tRb-VH-PQU" secondAttribute="centerX" id="jpR-IW-uOj"/>
+                            <constraint firstItem="JCN-O4-NlV" firstAttribute="top" secondItem="tRb-VH-PQU" secondAttribute="bottom" constant="19" id="vnb-LX-sEZ"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="label" destination="tRb-VH-PQU" id="LnS-et-X3S"/>

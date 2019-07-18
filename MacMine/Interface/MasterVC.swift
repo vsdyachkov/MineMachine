@@ -9,7 +9,8 @@
 import Foundation
 import Cocoa
 
-protocol GameOverable  {
+protocol GameStatusProtocol  {
+    func newGame()
     func gameOver(win:Bool)
 }
 
@@ -18,7 +19,7 @@ protocol GameInfoProtocol {
     func mineLabelDecrement()
 }
 
-class MasterVC: NSViewController, GameOverable, GameInfoProtocol
+class MasterVC: NSViewController, GameStatusProtocol, GameInfoProtocol
 {
     @IBOutlet weak var label: NSTextField!
     
@@ -26,7 +27,6 @@ class MasterVC: NSViewController, GameOverable, GameInfoProtocol
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        newGame()
     }
     
     func mineLabelIncrement() {
@@ -49,7 +49,9 @@ class MasterVC: NSViewController, GameOverable, GameInfoProtocol
         })
     }
     
-    @IBAction func pushButton(_ sender: Any) {
+    @IBAction func newGameAction(_ sender: Any) {
+        
+        GridModel.sharedInstance.generate()
         newGame()
     }
     
