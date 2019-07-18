@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14835.7" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14835.7"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -159,79 +160,29 @@
                     <window key="window" title="MacMine" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES"/>
-                        <rect key="contentRect" x="668" y="535" width="300" height="365"/>
+                        <rect key="contentRect" x="254" y="239" width="1200" height="650"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
-                        <value key="minSize" type="size" width="300" height="365"/>
-                        <value key="maxSize" type="size" width="300" height="365"/>
+                        <value key="minSize" type="size" width="1200" height="650"/>
+                        <value key="maxSize" type="size" width="1200" height="650"/>
                         <connections>
                             <outlet property="delegate" destination="B8D-0N-5wS" id="98r-iN-zZc"/>
                         </connections>
                     </window>
                     <connections>
-                        <segue destination="XfG-lQ-9wD" kind="relationship" relationship="window.shadowedContentViewController" id="cq2-FE-JQM"/>
+                        <segue destination="K9r-IN-VVT" kind="relationship" relationship="window.shadowedContentViewController" id="6gh-Jm-sCs"/>
                     </connections>
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="250"/>
         </scene>
-        <!--View Controller-->
+        <!--DetailVC-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="MacMine" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XfG-lQ-9wD" customClass="DetailVC" customModule="MacMine" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="300" height="365"/>
+                        <rect key="frame" x="0.0" y="0.0" width="900" height="365"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <subviews>
-                            <gridView fixedFrame="YES" xPlacement="leading" yPlacement="bottom" rowAlignment="none" translatesAutoresizingMaskIntoConstraints="NO" id="nxT-Jk-rZr">
-                                <rect key="frame" x="0.0" y="336" width="287" height="21"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <rows>
-                                    <gridRow id="Fa9-L0-tU9"/>
-                                </rows>
-                                <columns>
-                                    <gridColumn width="113" id="gGt-Rk-d8D"/>
-                                    <gridColumn width="102" id="1gH-d0-mPg"/>
-                                    <gridColumn id="7Lg-Jk-KSJ"/>
-                                </columns>
-                                <gridCells>
-                                    <gridCell row="Fa9-L0-tU9" column="gGt-Rk-d8D" id="URM-oV-Uoq">
-                                        <button key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bXc-je-NHl">
-                                            <rect key="frame" x="-6" y="-7" width="112" height="32"/>
-                                            <buttonCell key="cell" type="push" title="Новая игра" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="c1b-Kl-jr8">
-                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                <font key="font" metaFont="system"/>
-                                                <connections>
-                                                    <action selector="pushButton:" target="XfG-lQ-9wD" id="WYJ-dD-dv5"/>
-                                                </connections>
-                                            </buttonCell>
-                                        </button>
-                                    </gridCell>
-                                    <gridCell row="Fa9-L0-tU9" column="1gH-d0-mPg" id="jum-wZ-yHS">
-                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tRb-VH-PQU">
-                                            <rect key="frame" x="117" y="0.0" width="41" height="17"/>
-                                            <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Label" id="YGF-xA-0k5">
-                                                <font key="font" metaFont="system"/>
-                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            </textFieldCell>
-                                        </textField>
-                                    </gridCell>
-                                    <gridCell row="Fa9-L0-tU9" column="7Lg-Jk-KSJ" id="ZXL-wY-5w4">
-                                        <button key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JCN-O4-NlV">
-                                            <rect key="frame" x="221" y="-7" width="72" height="32"/>
-                                            <buttonCell key="cell" type="push" title="Help!" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="leC-7M-Vat">
-                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                <font key="font" metaFont="system"/>
-                                            </buttonCell>
-                                            <connections>
-                                                <action selector="helpAction:" target="XfG-lQ-9wD" id="nC9-kl-jmN"/>
-                                            </connections>
-                                        </button>
-                                    </gridCell>
-                                </gridCells>
-                            </gridView>
-                        </subviews>
                     </view>
                     <connections>
                         <outlet property="label" destination="tRb-VH-PQU" id="csH-UH-STX"/>
@@ -239,7 +190,92 @@
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="753.5"/>
+            <point key="canvasLocation" x="471" y="1455"/>
+        </scene>
+        <!--SplitVC-->
+        <scene sceneID="ilE-lg-R9n">
+            <objects>
+                <splitViewController id="K9r-IN-VVT" customClass="SplitVC" customModule="MacMine" customModuleProvider="target" sceneMemberID="viewController">
+                    <splitViewItems>
+                        <splitViewItem id="OVL-ZP-DBy"/>
+                        <splitViewItem id="4dZ-yN-CQV"/>
+                    </splitViewItems>
+                    <splitView key="splitView" dividerStyle="thin" vertical="YES" id="fPC-RD-Xoa">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <outlet property="delegate" destination="K9r-IN-VVT" id="xa6-Vq-NRM"/>
+                        </connections>
+                    </splitView>
+                    <connections>
+                        <outlet property="splitView" destination="fPC-RD-Xoa" id="3C2-eE-SqS"/>
+                        <segue destination="92v-3S-d4s" kind="relationship" relationship="splitItems" id="1fd-Vc-hkS"/>
+                        <segue destination="XfG-lQ-9wD" kind="relationship" relationship="splitItems" id="6Hd-TJ-Jtr"/>
+                    </connections>
+                </splitViewController>
+                <customObject id="SxR-u3-rhL" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="75" y="930"/>
+        </scene>
+        <!--MasterVC-->
+        <scene sceneID="PIB-7b-FBT">
+            <objects>
+                <viewController id="92v-3S-d4s" customClass="MasterVC" customModule="MacMine" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="xJQ-P5-It2">
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="650"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bXc-je-NHl">
+                                <rect key="frame" x="87" y="602" width="112" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Новая игра" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="c1b-Kl-jr8">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <connections>
+                                        <action selector="pushButton:" target="XfG-lQ-9wD" id="WYJ-dD-dv5"/>
+                                    </connections>
+                                </buttonCell>
+                            </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tRb-VH-PQU">
+                                <rect key="frame" x="117" y="584" width="41" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Label" id="YGF-xA-0k5">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JCN-O4-NlV">
+                                <rect key="frame" x="101" y="537" width="72" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Help!" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="leC-7M-Vat">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="helpAction:" target="XfG-lQ-9wD" id="nC9-kl-jmN"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ACm-kB-yoa">
+                                <rect key="frame" x="97" y="498" width="81" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="AI Play" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="AfF-20-BD4">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="AIPlayAction:" target="XfG-lQ-9wD" id="Gfp-vb-pQA"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                    </view>
+                    <connections>
+                        <outlet property="label" destination="tRb-VH-PQU" id="LnS-et-X3S"/>
+                    </connections>
+                </viewController>
+                <customObject id="H4a-gj-cvz" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-149" y="1597"/>
         </scene>
     </scenes>
 </document>

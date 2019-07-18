@@ -84,11 +84,7 @@ class CellView : NSImageView {
         }
     }
     
-    func isFlag() -> Bool { return textLayer.string as? String == flagSymbol }
-    func isOpen() -> Bool { return textLayer.string != nil }
-    func isMine() -> Bool { return type == .mine }
-    func isAIMine() -> Bool { return cellColor() == redColor }
-    func isAISafe() -> Bool { return cellColor() == greenColor }
+   
     
     override func mouseDown(with theEvent: NSEvent) {
         super.mouseDown(with: theEvent)
@@ -100,28 +96,4 @@ class CellView : NSImageView {
         delegate?.click(cell: self, isLeftMouse:false)
     }
 
-}
-
-extension Array where Element == Array<CellView?> {
-    
-    func enumerate(_ action:(CellView) -> ()) {
-        for row in self {
-            for item in row {
-                if (item != nil) {
-                    action(item!)
-                }
-            }
-        }
-    }
-}
-
-extension Array where Element == Array<CellView> {
-    
-    func enumerate(_ action:(CellView) -> ()) {
-        for row in self {
-            for item in row {
-                action(item)
-            }
-        }
-    }
 }
