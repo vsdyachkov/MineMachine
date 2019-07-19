@@ -12,7 +12,9 @@ protocol Clickable {
     func click(cell:CellView, isLeftMouse:Bool)
 }
 
-class DetailVC: NSViewController, Clickable
+protocol Drawable:NSViewController { }
+
+class DetailVC: NSViewController, Clickable, Drawable
 {
     func click(cell: CellView, isLeftMouse: Bool)
     {

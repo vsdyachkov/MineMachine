@@ -21,6 +21,7 @@ class GridModel {
     var width:Int!
     var height:Int!
     var mines:Int!
+    var drawDelegate:Drawable?
     var clickDelegate:Clickable?
     var gameDelegate:GameStatusProtocol?
     var infoDelegate:GameInfoProtocol?
@@ -30,6 +31,7 @@ class GridModel {
     class func setup (width: Int,
                       height: Int,
                       mines: Int,
+                      drawDelegate:Drawable?,
                       clickDelegate:Clickable?,
                       gameDelegate:GameStatusProtocol?,
                       infoDelegate:GameInfoProtocol?)
@@ -37,6 +39,8 @@ class GridModel {
         sharedInstance.width = width
         sharedInstance.height = height
         sharedInstance.mines = mines
+        
+        sharedInstance.drawDelegate = drawDelegate
         sharedInstance.clickDelegate = clickDelegate
         sharedInstance.gameDelegate = gameDelegate
         sharedInstance.infoDelegate = infoDelegate

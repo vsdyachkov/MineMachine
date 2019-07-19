@@ -14,6 +14,8 @@ class AIPlayer
     {
         gridModel.grid.enumerate
         {
+            if ($0.isOpen()) { return }
+            
             if ($0.isAIMine())
             {
                 if (!$0.isFlag())

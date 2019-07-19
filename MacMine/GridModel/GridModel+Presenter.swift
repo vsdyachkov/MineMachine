@@ -11,11 +11,11 @@ import Cocoa
 
 extension GridModel
 {
-    public func draw(view:NSView) {
+    public func draw() {
         
         // очистка от старых CellView
         
-        for currentView in view.subviews {
+        for currentView in (drawDelegate?.view.subviews)! {
             if (currentView.isKind(of: CellView.self)) {
                 currentView.removeFromSuperview()
             }
@@ -26,7 +26,7 @@ extension GridModel
         for x in 0...grid.count-1 {
             for y in 0...grid[x].count-1 {
                 let cell = grid[x][y]
-                view.addSubview(cell)
+                drawDelegate?.view.addSubview(cell)
             }
         }
     }

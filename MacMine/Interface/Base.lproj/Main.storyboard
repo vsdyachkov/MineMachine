@@ -158,9 +158,10 @@
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
                     <window key="window" title="MacMine" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES"/>
-                        <rect key="contentRect" x="254" y="239" width="1200" height="650"/>
+                        <rect key="contentRect" x="277" y="239" width="1050" height="600"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                        <value key="minSize" type="size" width="1050" height="600"/>
+                        <value key="maxSize" type="size" width="1050" height="600"/>
                         <connections>
                             <outlet property="delegate" destination="B8D-0N-5wS" id="98r-iN-zZc"/>
                         </connections>
@@ -178,7 +179,7 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="DetailVC" customModule="MacMine" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="900" height="365"/>
+                        <rect key="frame" x="0.0" y="0.0" width="900" height="600"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </view>
                     <connections>
@@ -187,7 +188,7 @@
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="471" y="1455"/>
+            <point key="canvasLocation" x="467" y="1568"/>
         </scene>
         <!--SplitVC-->
         <scene sceneID="ilE-lg-R9n">
@@ -219,67 +220,175 @@
             <objects>
                 <viewController id="92v-3S-d4s" customClass="MasterVC" customModule="MacMine" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="xJQ-P5-It2">
-                        <rect key="frame" x="0.0" y="0.0" width="300" height="650"/>
+                        <rect key="frame" x="0.0" y="0.0" width="150" height="600"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bXc-je-NHl">
-                                <rect key="frame" x="87" y="602" width="112" height="32"/>
-                                <buttonCell key="cell" type="push" title="Новая игра" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="c1b-Kl-jr8">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="newGameAction:" target="92v-3S-d4s" id="74I-Af-8Vb"/>
-                                </connections>
-                            </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tRb-VH-PQU">
-                                <rect key="frame" x="117" y="584" width="41" height="17"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Label" id="YGF-xA-0k5">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JCN-O4-NlV">
-                                <rect key="frame" x="101" y="537" width="72" height="32"/>
-                                <buttonCell key="cell" type="push" title="Help!" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="leC-7M-Vat">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="helpAction:" target="92v-3S-d4s" id="Lp1-rR-sYF"/>
-                                </connections>
-                            </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ACm-kB-yoa">
-                                <rect key="frame" x="97" y="498" width="81" height="32"/>
-                                <buttonCell key="cell" type="push" title="AI Play" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="AfF-20-BD4">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="AIPlayAction:" target="92v-3S-d4s" id="d3v-vX-Y4c"/>
-                                </connections>
-                            </button>
+                            <gridView fixedFrame="YES" xPlacement="leading" yPlacement="bottom" rowAlignment="none" translatesAutoresizingMaskIntoConstraints="NO" id="LrZ-aw-EbF">
+                                <rect key="frame" x="20" y="163" width="110" height="417"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <rows>
+                                    <gridRow id="Gzq-Ej-Odb"/>
+                                    <gridRow id="sO9-df-kGi"/>
+                                    <gridRow id="XpW-q4-YqO"/>
+                                    <gridRow id="JJp-DL-4ac"/>
+                                    <gridRow id="OuD-gq-OLe"/>
+                                    <gridRow id="WMz-fc-sOo"/>
+                                    <gridRow id="Kfz-K2-sfe"/>
+                                    <gridRow id="x9d-EC-V9T"/>
+                                    <gridRow id="qgq-PK-MG6"/>
+                                    <gridRow id="bco-Ob-Dc5"/>
+                                    <gridRow id="673-AA-8I7"/>
+                                    <gridRow id="1Wf-uX-hZs"/>
+                                    <gridRow id="hrT-HF-OyV"/>
+                                </rows>
+                                <columns>
+                                    <gridColumn id="zEw-cT-7mW"/>
+                                </columns>
+                                <gridCells>
+                                    <gridCell row="Gzq-Ej-Odb" column="zEw-cT-7mW" id="QNS-n0-PKM">
+                                        <button key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bXc-je-NHl">
+                                            <rect key="frame" x="-6" y="385" width="122" height="36"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="110" id="eeP-Vd-l3W"/>
+                                                <constraint firstAttribute="height" constant="25" id="lyP-aM-D6m"/>
+                                            </constraints>
+                                            <buttonCell key="cell" type="push" title="Новая игра" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="c1b-Kl-jr8">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" size="13" name="AmericanTypewriter"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="newGameAction:" target="92v-3S-d4s" id="74I-Af-8Vb"/>
+                                            </connections>
+                                        </button>
+                                    </gridCell>
+                                    <gridCell row="sO9-df-kGi" column="zEw-cT-7mW" id="XYm-Ic-zOv"/>
+                                    <gridCell row="XpW-q4-YqO" column="zEw-cT-7mW" id="lZh-iq-uaz">
+                                        <button key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JCN-O4-NlV">
+                                            <rect key="frame" x="-6" y="318" width="122" height="36"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="25" id="FeO-s6-y3o"/>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="110" id="UsV-cg-DD2"/>
+                                            </constraints>
+                                            <buttonCell key="cell" type="push" title="Анализ" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="leC-7M-Vat">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" size="13" name="AmericanTypewriter"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="analyzeAction:" target="92v-3S-d4s" id="Lp1-rR-sYF"/>
+                                            </connections>
+                                        </button>
+                                    </gridCell>
+                                    <gridCell row="JJp-DL-4ac" column="zEw-cT-7mW" id="dRg-E3-NHP">
+                                        <button key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="N8i-GT-fMv">
+                                            <rect key="frame" x="-6" y="287" width="122" height="36"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="25" id="6b4-Cr-IkZ"/>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="110" id="aJx-FC-15F"/>
+                                            </constraints>
+                                            <buttonCell key="cell" type="push" title="Сделть ходы" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Plv-y6-0JV">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="playAnalyzedAction:" target="92v-3S-d4s" id="3hN-D5-02V"/>
+                                            </connections>
+                                        </button>
+                                    </gridCell>
+                                    <gridCell row="OuD-gq-OLe" column="zEw-cT-7mW" id="8h2-QV-2vT"/>
+                                    <gridCell row="WMz-fc-sOo" column="zEw-cT-7mW" id="Wtx-AP-djO">
+                                        <button key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ACm-kB-yoa">
+                                            <rect key="frame" x="-6" y="220" width="122" height="36"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="25" id="1BA-q4-dtT"/>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="110" id="SEI-84-ojn"/>
+                                            </constraints>
+                                            <buttonCell key="cell" type="push" title="Игра ИИ" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="AfF-20-BD4">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" size="13" name="AmericanTypewriter"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="AIPlayAction:" target="92v-3S-d4s" id="d3v-vX-Y4c"/>
+                                            </connections>
+                                        </button>
+                                    </gridCell>
+                                    <gridCell row="Kfz-K2-sfe" column="zEw-cT-7mW" id="Dhy-MM-ffQ"/>
+                                    <gridCell row="x9d-EC-V9T" column="zEw-cT-7mW" id="1Pk-L2-1RV">
+                                        <button key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="62T-cT-blp">
+                                            <rect key="frame" x="-6" y="153" width="122" height="36"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="25" id="Xmz-my-pp7"/>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="110" id="aje-BO-0eX"/>
+                                            </constraints>
+                                            <buttonCell key="cell" type="push" title="Нов игра ИИ" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="8UL-Tr-4Kh">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" size="13" name="AmericanTypewriter"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="newGameWithAI:" target="92v-3S-d4s" id="tZV-pH-UG0"/>
+                                            </connections>
+                                        </button>
+                                    </gridCell>
+                                    <gridCell row="qgq-PK-MG6" column="zEw-cT-7mW" id="p4U-F3-bbQ"/>
+                                    <gridCell row="bco-Ob-Dc5" column="zEw-cT-7mW" id="ZKu-qj-CyL">
+                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tRb-VH-PQU">
+                                            <rect key="frame" x="-2" y="93" width="114" height="25"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="110" id="Oeo-bY-bTE"/>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="25" id="ZRS-Qo-FBi"/>
+                                            </constraints>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Label" id="YGF-xA-0k5">
+                                                <font key="font" size="13" name="AmericanTypewriter"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                    </gridCell>
+                                    <gridCell row="673-AA-8I7" column="zEw-cT-7mW" id="GHI-7P-Yuf">
+                                        <progressIndicator key="contentView" wantsLayer="YES" maxValue="100" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="Kff-Pg-Ffl">
+                                            <rect key="frame" x="0.0" y="61" width="110" height="27"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="25" id="PBz-no-A2q"/>
+                                                <constraint firstAttribute="width" constant="110" id="fEb-ti-F3C"/>
+                                            </constraints>
+                                        </progressIndicator>
+                                    </gridCell>
+                                    <gridCell row="1Wf-uX-hZs" column="zEw-cT-7mW" id="AhI-7P-a19">
+                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pnd-NZ-Bai">
+                                            <rect key="frame" x="-2" y="31" width="114" height="25"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="110" id="Tuw-kO-TZU"/>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="25" id="fX8-Ng-Abo"/>
+                                            </constraints>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Label" id="iUD-nP-F9F">
+                                                <font key="font" size="13" name="AmericanTypewriter"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                    </gridCell>
+                                    <gridCell row="hrT-HF-OyV" column="zEw-cT-7mW" id="Fnu-me-uSW">
+                                        <progressIndicator key="contentView" wantsLayer="YES" maxValue="100" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="shR-bH-OzT">
+                                            <rect key="frame" x="0.0" y="-1" width="110" height="27"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="110" id="0Is-4B-yLo"/>
+                                                <constraint firstAttribute="height" constant="25" id="t3f-Fo-eis"/>
+                                            </constraints>
+                                        </progressIndicator>
+                                    </gridCell>
+                                </gridCells>
+                            </gridView>
                         </subviews>
-                        <constraints>
-                            <constraint firstItem="JCN-O4-NlV" firstAttribute="centerX" secondItem="ACm-kB-yoa" secondAttribute="centerX" id="4sX-dc-AMW"/>
-                            <constraint firstItem="bXc-je-NHl" firstAttribute="leading" secondItem="xJQ-P5-It2" secondAttribute="leading" constant="93" id="6vH-IO-Y7K"/>
-                            <constraint firstItem="ACm-kB-yoa" firstAttribute="top" secondItem="JCN-O4-NlV" secondAttribute="bottom" constant="18" id="8ZG-RQ-7q7"/>
-                            <constraint firstItem="tRb-VH-PQU" firstAttribute="top" secondItem="bXc-je-NHl" secondAttribute="bottom" constant="8" symbolic="YES" id="Kwc-zL-1tL"/>
-                            <constraint firstItem="JCN-O4-NlV" firstAttribute="leading" secondItem="xJQ-P5-It2" secondAttribute="leading" constant="107" id="LQs-Y9-rzq"/>
-                            <constraint firstItem="JCN-O4-NlV" firstAttribute="top" secondItem="xJQ-P5-It2" secondAttribute="top" constant="85" id="R03-AR-VpT"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="bXc-je-NHl" secondAttribute="trailing" constant="20" symbolic="YES" id="Zwh-DR-SCJ"/>
-                            <constraint firstItem="JCN-O4-NlV" firstAttribute="centerX" secondItem="tRb-VH-PQU" secondAttribute="centerX" id="jpR-IW-uOj"/>
-                            <constraint firstItem="JCN-O4-NlV" firstAttribute="top" secondItem="tRb-VH-PQU" secondAttribute="bottom" constant="19" id="vnb-LX-sEZ"/>
-                        </constraints>
                     </view>
                     <connections>
-                        <outlet property="label" destination="tRb-VH-PQU" id="LnS-et-X3S"/>
+                        <outlet property="fieldProgres" destination="shR-bH-OzT" id="vP7-lW-y5s"/>
+                        <outlet property="filedOpenInfoLabel" destination="pnd-NZ-Bai" id="P6g-uL-0Mi"/>
+                        <outlet property="minesOpenInfolabel" destination="tRb-VH-PQU" id="LnS-et-X3S"/>
+                        <outlet property="minesProgres" destination="Kff-Pg-Ffl" id="WHT-b1-RJ9"/>
                     </connections>
                 </viewController>
                 <customObject id="H4a-gj-cvz" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-149" y="1597"/>
+            <point key="canvasLocation" x="-76" y="1568"/>
         </scene>
     </scenes>
 </document>

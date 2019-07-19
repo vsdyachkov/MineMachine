@@ -43,4 +43,16 @@ extension GridModel
             return nil
         }
     }
+    
+    public func openedCells() -> Int
+    {
+        var count = 0
+        grid.enumerate {
+            if ($0.isOpen())
+            {
+                count += 1
+            }
+        }
+        return count
+    }
 }
