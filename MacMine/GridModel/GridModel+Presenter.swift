@@ -53,7 +53,7 @@ extension GridModel
                         let count = minesCountIn(region: regionAround(position: (x,y)))
                         if (cell.type == .mine) {
                             cell.setBombText()
-                            gameDelegate?.gameOver(win: false, position:position)
+                            gameDelegate?.gameOver(win: false)
                             return
                         } else {
                             cell.setNumberText(num: count)
@@ -66,15 +66,14 @@ extension GridModel
         }
     }
     
-    public func openMines(win:Bool, position:(Int, Int))
+    public func openMines(win:Bool)
     {
         grid.enumerate {
             if ($0.type == .mine) {
-                let isExplosedBomb = !win && $0.position == position
-                if (isExplosedBomb) {
-                    $0.setExplosedBombText()
-                } else {
+                if (win) {
                     $0.setBombText()
+                } else {
+                    $0.setExplosedBombText()
                 }
             } else {
                 let count = minesAround(position: $0.position)

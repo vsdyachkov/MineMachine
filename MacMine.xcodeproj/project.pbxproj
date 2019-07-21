@@ -30,6 +30,7 @@
 		7738711F22DD29E0002FE1EC /* GridModel+Analyze.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GridModel+Analyze.swift"; sourceTree = "<group>"; };
 		7738712122DFC38C002FE1EC /* SplitVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitVC.swift; sourceTree = "<group>"; };
 		7738712322DFC3AC002FE1EC /* MasterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterVC.swift; sourceTree = "<group>"; };
+		7739E19022E47E55005CDB6F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		77651FF022D2AA9C00DFE4F1 /* MacMine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacMine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77651FF322D2AA9C00DFE4F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		77651FF522D2AA9C00DFE4F1 /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
@@ -94,6 +95,7 @@
 		77651FE722D2AA9C00DFE4F1 = {
 			isa = PBXGroup;
 			children = (
+				7739E19022E47E55005CDB6F /* README.md */,
 				77651FF222D2AA9C00DFE4F1 /* MacMine */,
 				7756528F22D532950088CBD7 /* Supporting Files */,
 				77651FF122D2AA9C00DFE4F1 /* Products */,

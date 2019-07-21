@@ -11,14 +11,7 @@ import Cocoa
 
 protocol GameStatusProtocol  {
     func newGame(completion: @escaping () -> Void)
-    func gameOver(win:Bool, position:(Int, Int))
-}
-
-extension GameStatusProtocol {
-    // optional parameter
-    func gameOver(win:Bool, position:(Int, Int) = (0,0)) {
-        gameOver(win: win, position: position)
-    }
+    func gameOver(win:Bool)
 }
 
 protocol GameInfoProtocol {
@@ -68,8 +61,8 @@ class MasterVC: NSViewController, GameStatusProtocol, GameInfoProtocol
         })
     }
     
-    func gameOver(win:Bool, position:(Int, Int)) {
-        GridModel.sharedInstance.openMines(win: win, position:position)
+    func gameOver(win:Bool) {
+        GridModel.sharedInstance.openMines(win: win)
         statusLabel.stringValue = win ? "Победа!" : "Поражение!"
     }
     
@@ -92,8 +85,7 @@ class MasterVC: NSViewController, GameStatusProtocol, GameInfoProtocol
                 self.averagePercentLabel.stringValue = String(format: "В среднем: %.0f %%", average)
                 self.playedGameLabel.stringValue = String(format: "Сыграно: %d", self.percentArray.count)
                 
-                if (self.isAutoPlay)
-                {
+                if (self.isAutoPlay) {
                     self.newGame {
                         self.AIPlay()
                     }
@@ -116,8 +108,7 @@ class MasterVC: NSViewController, GameStatusProtocol, GameInfoProtocol
         AIPlayer.playAnalyzed(gridModel: GridModel.sharedInstance, gameDelegate: self, infoDelegate: self)
     }
 
-    @IBAction func AIPlayAction(_ sender: Any)
-    {
+    @IBAction func AIPlayAction(_ sender: Any) {
         AIPlay()
     }
     

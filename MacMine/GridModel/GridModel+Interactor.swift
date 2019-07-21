@@ -61,6 +61,6 @@ extension GridModel
     
     public func setExplosedBomb(cell:CellView) {
         cell.setExplosedBombText()
-        gameDelegate?.gameOver(win: false, position: cell.position)
+        gameDelegate?.gameOver(win: false)
     }
 }
