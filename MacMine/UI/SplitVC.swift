@@ -21,11 +21,11 @@ class SplitVC: NSSplitViewController
         let detail = self.splitViewItems[1].viewController as! DetailVC
         
         GridModel.setup(width: width, height: height, mines: mines,
-                        drawDelegate:detail,
+                        drawDelegate: detail,
                         gameDelegate: master,
                         infoDelegate: master)
         
-        master.newGame()
+        master.newGame(){}
     }
     
 }

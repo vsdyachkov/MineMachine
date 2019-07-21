@@ -10,7 +10,7 @@ import Foundation
 import Cocoa
 
 protocol GameStatusProtocol  {
-    func newGame()
+    func newGame(completion: @escaping () -> Void)
     func gameOver(win:Bool, position:(Int, Int))
 }
 
@@ -29,8 +29,12 @@ class MasterVC: NSViewController, GameStatusProtocol, GameInfoProtocol
 {
     @IBOutlet weak var filedOpenInfoLabel: NSTextField!
     @IBOutlet weak var fieldProgres: NSProgressIndicator!
-    
     @IBOutlet weak var statusLabel: NSTextField!
+    @IBOutlet weak var playedGameLabel: NSTextFieldCell!
+    @IBOutlet weak var averagePercentLabel: NSTextField!
+    
+    var percentArray = [Double]()
+    var isAutoPlay:Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +56,7 @@ class MasterVC: NSViewController, GameStatusProtocol, GameInfoProtocol
         fieldProgres.doubleValue = Double(openedCells.0)
     }
     
-    func newGame() {
+    func newGame(completion: @escaping () -> Void) {
         GridModel.sharedInstance.generate()
         
         initUI()
@@ -60,6 +64,7 @@ class MasterVC: NSViewController, GameStatusProtocol, GameInfoProtocol
         GridModel.sharedInstance.draw()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
             GridModel.sharedInstance.openZeroCell()
+            completion()
         })
     }
     
@@ -76,17 +81,31 @@ class MasterVC: NSViewController, GameStatusProtocol, GameInfoProtocol
             if (Alazyler.analyze(gridModel:GridModel.sharedInstance))
             {
                 AIPlayer.playAnalyzed(gridModel: GridModel.sharedInstance, gameDelegate: self, infoDelegate: self)
-//                self.updateInfo()
             }
             else
             {
                 timer.invalidate()
+                let openedCells = GridModel.sharedInstance.openedCells()
+                let percent = Double(openedCells.0) / Double(openedCells.1) * 100.0
+                self.percentArray.append(percent)
+                let average = self.percentArray.reduce(0, { $0 + $1 }) / Double(self.percentArray.count)
+                self.averagePercentLabel.stringValue = String(format: "В среднем: %.0f %%", average)
+                self.playedGameLabel.stringValue = String(format: "Сыграно: %d", self.percentArray.count)
+                
+                if (self.isAutoPlay)
+                {
+                    self.newGame {
+                        self.AIPlay()
+                    }
+                }
             }
         }
     }
     
+//    ##MARK: 2
+    
     @IBAction func newGameAction(_ sender: Any) {
-        newGame()
+        newGame(){}
     }
     
     @IBAction func analyzeAction(_ sender: Any) {
@@ -103,9 +122,18 @@ class MasterVC: NSViewController, GameStatusProtocol, GameInfoProtocol
     }
     
     @IBAction func newGameWithAI(_ sender: Any) {
-        newGame()
+        newGame() {}
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
             self.AIPlay()
         })
+    }
+    
+    @IBAction func autoPlayAction(_ sender: Any) {
+        isAutoPlay = true
+        AIPlay()
+    }
+    
+    @IBAction func stopAutoPlayAction(_ sender: Any) {
+        isAutoPlay = false
     }
 }
