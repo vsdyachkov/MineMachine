@@ -34,7 +34,8 @@ extension GridModel
             removeFlag(cell: cell)
         } else {
             openAround(position: cell.position)
-            infoDelegate?.updateInfo(openedCells: openedCells())
+            GridModel.shared.moveArray.append(cell.position)
+            infoDelegate?.updateInfo(openedCells: openedCells(), moves: GridModel.shared.moveArray)
             checkAllOpened()
         }
     }
@@ -42,12 +43,13 @@ extension GridModel
     public func openCell(cell:CellView) {
         let mines = minesAround(position: cell.position)
         cell.setNumberText(num: mines)
+        GridModel.shared.moveArray.append(cell.position)
         
         if (mines == 0) {
             openAround(position: cell.position)
         }
         
-        infoDelegate?.updateInfo(openedCells: openedCells())
+        infoDelegate?.updateInfo(openedCells: openedCells(), moves: GridModel.shared.moveArray)
         checkAllOpened()
     }
     
@@ -61,6 +63,7 @@ extension GridModel
     
     public func setExplosedBomb(cell:CellView) {
         cell.setExplosedBombText()
+        GridModel.shared.moveArray.append(cell.position)
         gameDelegate?.gameOver(win: false)
     }
 }

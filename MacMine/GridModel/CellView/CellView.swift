@@ -42,12 +42,12 @@ class CellView : NSImageView {
     
     override func mouseDown(with theEvent: NSEvent) {
         super.mouseDown(with: theEvent)
-        GridModel.sharedInstance.leftClick(position: position)
+        GridModel.shared.leftClick(position: position)
     }
     
     override func rightMouseDown(with theEvent: NSEvent) {
         super.rightMouseDown(with: theEvent)
-        GridModel.sharedInstance.rightClick(position: position)
+        GridModel.shared.rightClick(position: position)
     }
 
 }

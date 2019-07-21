@@ -25,8 +25,9 @@ class GridModel {
     var drawDelegate:Drawable?
     var gameDelegate:GameStatusProtocol?
     var infoDelegate:GameInfoProtocol?
+    var moveArray = [(Int, Int)]()
 
-    static let sharedInstance = GridModel()
+    static let shared = GridModel()
     
     class func setup (width: Int,
                       height: Int,
@@ -35,18 +36,20 @@ class GridModel {
                       gameDelegate:GameStatusProtocol?,
                       infoDelegate:GameInfoProtocol?)
     {
-        sharedInstance.width = width
-        sharedInstance.height = height
-        sharedInstance.mines = mines
+        shared.width = width
+        shared.height = height
+        shared.mines = mines
         
-        sharedInstance.drawDelegate = drawDelegate
-        sharedInstance.gameDelegate = gameDelegate
-        sharedInstance.infoDelegate = infoDelegate
+        shared.drawDelegate = drawDelegate
+        shared.gameDelegate = gameDelegate
+        shared.infoDelegate = infoDelegate
         
-        sharedInstance.generate()
+        shared.generate()
     }
     
     public func generate () {
+        
+        moveArray = [(Int, Int)]()
         
         guard (width != nil), (height != nil), (mines != nil) else {
             fatalError("Error - you must call setup before accessing MySingleton.shared")

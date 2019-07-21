@@ -37,7 +37,7 @@ extension GridModel
         {
             openAround(position: cell.position)
         }
-        infoDelegate?.updateInfo(openedCells: openedCells())
+        infoDelegate?.updateInfo(openedCells: openedCells(), moves: GridModel.shared.moveArray)
         checkAllOpened()
     }
     
