@@ -60,7 +60,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7738712522DFEF1D002FE1EC /* Interface */ = {
+		7738712522DFEF1D002FE1EC /* UI */ = {
 			isa = PBXGroup;
 			children = (
 				77651FF922D2AA9F00DFE4F1 /* Main.storyboard */,
@@ -68,7 +68,7 @@
 				7738712322DFC3AC002FE1EC /* MasterVC.swift */,
 				77651FF522D2AA9C00DFE4F1 /* DetailVC.swift */,
 			);
-			path = Interface;
+			path = UI;
 			sourceTree = "<group>";
 		};
 		7738712622DFEF3C002FE1EC /* AI */ = {
@@ -111,7 +111,7 @@
 		77651FF222D2AA9C00DFE4F1 /* MacMine */ = {
 			isa = PBXGroup;
 			children = (
-				7738712522DFEF1D002FE1EC /* Interface */,
+				7738712522DFEF1D002FE1EC /* UI */,
 				77D79D6822DD1150008F585D /* GridModel */,
 				7738712622DFEF3C002FE1EC /* AI */,
 			);

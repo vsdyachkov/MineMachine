@@ -14,7 +14,11 @@ extension CellView
     public func setBombText() { setText(text: "💣") }
     public func setExplosedBombText() { setText(text: "💥") }
     public func setFlagText() { setText(text: "⚑") }
-    public func setNumberText(num:Int) { setText(text: String(num)) }
+    public func setNumberText(num:Int) {
+        setText(text: String(num))
+//        info
+        
+    }
     func isMine() -> Bool { return type == .mine }
     
     

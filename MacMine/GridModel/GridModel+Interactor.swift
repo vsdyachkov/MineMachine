@@ -17,20 +17,11 @@ extension GridModel
         if (cell.isFlag()) {
             return
         } else if (cell.isMine()) {
-            cell.setBombText()
-            gameDelegate?.gameOver(win: false)
+            setExplosedBomb(cell: cell)
             return
         } else {
-            let mines = minesAround(position: position)
-            cell.setNumberText(num: mines)
-            checkAllOpened()
-            if (mines == 0) {
-                openAround(position: cell.position)
-            }
-            checkAllOpened()
+            openCell(cell: cell)
         }
-        
-//        cell.setCellColor(color: .clear)
     }
     
     public func rightClick(position:(Int,Int))
@@ -38,20 +29,38 @@ extension GridModel
         let cell = grid[position.0][position.1]
         
         if (!cell.isOpen()) {
-            cell.setFlagText()
-            infoDelegate?.mineLabelIncrement()
+            setFlag(cell: cell)
         } else if (cell.isFlag()) {
-            cell.textLayer.string = nil
-            infoDelegate?.mineLabelDecrement()
+            removeFlag(cell: cell)
         } else {
             openAround(position: cell.position)
+            infoDelegate?.updateInfo(openedCells: openedCells())
             checkAllOpened()
         }
-        
-//        cell.setCellColor(color: .clear)
     }
     
+    public func openCell(cell:CellView) {
+        let mines = minesAround(position: cell.position)
+        cell.setNumberText(num: mines)
+        
+        if (mines == 0) {
+            openAround(position: cell.position)
+        }
+        
+        infoDelegate?.updateInfo(openedCells: openedCells())
+        checkAllOpened()
+    }
     
+    public func setFlag(cell:CellView) {
+        cell.setFlagText()
+    }
     
+    public func removeFlag(cell:CellView) {
+        cell.textLayer.string = nil
+    }
     
+    public func setExplosedBomb(cell:CellView) {
+        cell.setExplosedBombText()
+        gameDelegate?.gameOver(win: false, position: cell.position)
+    }
 }

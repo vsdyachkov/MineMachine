@@ -20,9 +20,9 @@ class GridModel {
     
     var width:Int!
     var height:Int!
+    var capacity:Int!
     var mines:Int!
     var drawDelegate:Drawable?
-    var clickDelegate:Clickable?
     var gameDelegate:GameStatusProtocol?
     var infoDelegate:GameInfoProtocol?
 
@@ -32,7 +32,6 @@ class GridModel {
                       height: Int,
                       mines: Int,
                       drawDelegate:Drawable?,
-                      clickDelegate:Clickable?,
                       gameDelegate:GameStatusProtocol?,
                       infoDelegate:GameInfoProtocol?)
     {
@@ -41,7 +40,6 @@ class GridModel {
         sharedInstance.mines = mines
         
         sharedInstance.drawDelegate = drawDelegate
-        sharedInstance.clickDelegate = clickDelegate
         sharedInstance.gameDelegate = gameDelegate
         sharedInstance.infoDelegate = infoDelegate
         
@@ -56,7 +54,7 @@ class GridModel {
         
         // перемешанный массив с минами и пустыми клетками
         
-        let capacity = width * height
+        capacity = width * height
         var shuffledArray = [cellType]()
         for i in 0...capacity-1 { shuffledArray.append( i < mines ? .mine : .clear) }
         shuffledArray.shuffle()
@@ -69,7 +67,7 @@ class GridModel {
             for y in 0...height-1 {
                 let flatPosition = x*height+y
                 let type = shuffledArray[flatPosition]
-                let cell = CellView(type: type, position: (x,y), size: 30, delegate: clickDelegate)
+                let cell = CellView(type: type, position: (x,y), size: 30)
                 grid[x].append(cell)
             }
         }
@@ -109,7 +107,9 @@ class GridModel {
                 needToOpen -= 1
             }
         }
-        if (needToOpen == 0) { gameDelegate?.gameOver(win: true) }
+        if (needToOpen == 0) {
+            gameDelegate?.gameOver(win: true)
+        }
     }
     
 }

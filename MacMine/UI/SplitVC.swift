@@ -22,7 +22,6 @@ class SplitVC: NSSplitViewController
         
         GridModel.setup(width: width, height: height, mines: mines,
                         drawDelegate:detail,
-                        clickDelegate: detail,
                         gameDelegate: master,
                         infoDelegate: master)
         

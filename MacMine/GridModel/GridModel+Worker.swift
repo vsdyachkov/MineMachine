@@ -44,7 +44,7 @@ extension GridModel
         }
     }
     
-    public func openedCells() -> Int
+    public func openedCells() -> (Int, Int)
     {
         var count = 0
         grid.enumerate {
@@ -53,6 +53,6 @@ extension GridModel
                 count += 1
             }
         }
-        return count
+        return (count, capacity)
     }
 }

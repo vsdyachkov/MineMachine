@@ -11,66 +11,48 @@ import Cocoa
 
 protocol GameStatusProtocol  {
     func newGame()
-    func gameOver(win:Bool)
+    func gameOver(win:Bool, position:(Int, Int))
+}
+
+extension GameStatusProtocol {
+    // optional parameter
+    func gameOver(win:Bool, position:(Int, Int) = (0,0)) {
+        gameOver(win: win, position: position)
+    }
 }
 
 protocol GameInfoProtocol {
-    func mineLabelIncrement()
-    func mineLabelDecrement()
+    func updateInfo(openedCells: (Int, Int))
 }
 
 class MasterVC: NSViewController, GameStatusProtocol, GameInfoProtocol
 {
-    @IBOutlet weak var minesOpenInfolabel: NSTextField!
     @IBOutlet weak var filedOpenInfoLabel: NSTextField!
-    
-    @IBOutlet weak var minesProgres: NSProgressIndicator!
     @IBOutlet weak var fieldProgres: NSProgressIndicator!
     
-    var minesOpened = 0
+    @IBOutlet weak var statusLabel: NSTextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     func initUI() {
-        minesOpenInfolabel.stringValue = "Новая игра"
-        
-        minesProgres.minValue = 0
-        minesProgres.maxValue = Double(GridModel.sharedInstance.mines)
-        minesProgres.doubleValue = 0
+        statusLabel.stringValue = "Игра в процессе"
         
         fieldProgres.minValue = 0
-        let capacity = GridModel.sharedInstance.height * GridModel.sharedInstance.width
-        fieldProgres.maxValue = Double(capacity)
+        let capacity = GridModel.sharedInstance.capacity
+        fieldProgres.maxValue = Double(capacity!)
         fieldProgres.doubleValue = 0
+        filedOpenInfoLabel.stringValue = String(format: "Открыто: 0 %%")
     }
     
-    func mineLabelIncrement() {
-        minesOpened += 1
-        updateInfo()
-    }
-    
-    func mineLabelDecrement() {
-        minesOpened -= 1
-        updateInfo()
-    }
-    
-    func updateInfo()
-    {
-        minesOpenInfolabel.stringValue = String(format: "Мины: %d / %d", minesOpened, GridModel.sharedInstance.mines)
-        minesProgres.doubleValue = Double(minesOpened)
-        
-        let capacity = Double(GridModel.sharedInstance.height * GridModel.sharedInstance.width)
-        let opened = Double(GridModel.sharedInstance.openedCells())
-        let percent = opened / capacity * 100.0
-        filedOpenInfoLabel.stringValue = String(format: "Поле: %.2f %%", percent)
-        fieldProgres.doubleValue = Double(opened)
+    func updateInfo(openedCells: (Int, Int)) {
+        let percent = Double(openedCells.0) / Double(openedCells.1) * 100.0
+        filedOpenInfoLabel.stringValue = String(format: "Открыто: %.0f %%", percent)
+        fieldProgres.doubleValue = Double(openedCells.0)
     }
     
     func newGame() {
-        minesOpened = 0
-        
         GridModel.sharedInstance.generate()
         
         initUI()
@@ -81,9 +63,9 @@ class MasterVC: NSViewController, GameStatusProtocol, GameInfoProtocol
         })
     }
     
-    func gameOver(win:Bool) {
-        GridModel.sharedInstance.openMines(win: win)
-        minesOpenInfolabel.stringValue = win ? "Победа!" : "Поражение!"
+    func gameOver(win:Bool, position:(Int, Int)) {
+        GridModel.sharedInstance.openMines(win: win, position:position)
+        statusLabel.stringValue = win ? "Победа!" : "Поражение!"
     }
     
     func AIPlay()
@@ -94,7 +76,7 @@ class MasterVC: NSViewController, GameStatusProtocol, GameInfoProtocol
             if (Alazyler.analyze(gridModel:GridModel.sharedInstance))
             {
                 AIPlayer.playAnalyzed(gridModel: GridModel.sharedInstance, gameDelegate: self, infoDelegate: self)
-                self.updateInfo()
+//                self.updateInfo()
             }
             else
             {

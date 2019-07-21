@@ -13,22 +13,24 @@ var flagSymbol = "⚑"
 
 class CellView : NSImageView {
     
-    var delegate: Clickable?
     var position = (0, 0)
     var type:cellType = .clear
     var textLayer = CATextLayer()
     var colorLayer = CALayer()
     
-    convenience init (type:cellType, position:(Int,Int), size:CGFloat, delegate:Clickable?)
+    convenience init (type:cellType, position:(Int,Int), size:CGFloat)
     {
         self.init()
         
         self.type = type
         self.position = position
-        self.delegate = delegate
-        self.image = NSImage(named: "clear")!
-        
         self.frame = NSMakeRect(CGFloat(position.0)*size, CGFloat(position.1)*size, size, size)
+        
+        initUI()
+    }
+    
+    func initUI() {
+        self.image = NSImage(named: "clear")!
         
         textLayer.frame = self.bounds
         textLayer.fontSize = 24
@@ -40,12 +42,12 @@ class CellView : NSImageView {
     
     override func mouseDown(with theEvent: NSEvent) {
         super.mouseDown(with: theEvent)
-        delegate?.click(cell: self, isLeftMouse:true)
+        GridModel.sharedInstance.leftClick(position: position)
     }
     
     override func rightMouseDown(with theEvent: NSEvent) {
         super.rightMouseDown(with: theEvent)
-        delegate?.click(cell: self, isLeftMouse:false)
+        GridModel.sharedInstance.rightClick(position: position)
     }
 
 }
