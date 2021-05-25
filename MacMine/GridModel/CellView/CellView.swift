@@ -14,6 +14,7 @@ var flagSymbol = "⚑"
 class CellView : NSImageView {
     
     var position = (0, 0)
+    var regionAround = [[CellView?]]()
     var type:cellType = .clear
     var textLayer = CATextLayer()
     var colorLayer = CALayer()

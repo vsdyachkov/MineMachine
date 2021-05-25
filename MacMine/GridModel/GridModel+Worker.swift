@@ -17,7 +17,8 @@ extension GridModel
     
     public func minesAround(position:(Int,Int)) -> Int
     {
-        let region = regionAround(position: position)
+        let cell = grid[position.0][position.1]
+        let region = cell.regionAround
         let count = minesCountIn(region: region)
         return count
     }

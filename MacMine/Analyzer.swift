@@ -36,15 +36,17 @@ class Alazyler
     {
         var actions = 0
         
-        gridModel.grid.enumerateOpened
+        let _ = gridModel.analyzeCachedCells.map
         {
             let closedAround = gridModel.analyzeClosedAround(position:$0.position)
-            if let string = $0.analyzeText(), let minesAround = Int(string)
+            if
+                let string = $0.analyzeText(),
+                let minesAround = Int(string)
             {
                 if (minesAround == closedAround)
                 {
                     var bombCell:CellView?
-                    let regionAround = gridModel.regionAround(position: $0.position)
+                    let regionAround = $0.regionAround
                     regionAround.enumerate {
                         if (!$0.isOpen() && !$0.isFlag()) { bombCell = $0 }
                     }
@@ -67,14 +69,16 @@ class Alazyler
     {
         var actions = 0
         
-        gridModel.grid.enumerateOpened
+        let _ = gridModel.analyzeCachedCells.map
         {
             let AIOpenedMinesAround = gridModel.analyzeMinesAround(position:$0.position)
-            if let string = $0.analyzeText(), let minesAround = Int(string)
+            if
+                let string = $0.analyzeText(),
+                let minesAround = Int(string)
             {
                 if (minesAround == AIOpenedMinesAround)
                 {
-                    let regionAround = gridModel.regionAround(position: $0.position)
+                    let regionAround = $0.regionAround
                     regionAround.enumerate {
                         if (!$0.isOpen() && !$0.isFlag() && !$0.isAIMine())
                         {
@@ -96,13 +100,13 @@ class Alazyler
     {
         var actions = 0
         
-        gridModel.grid.enumerateOpened
+        let _ = gridModel.analyzeCachedCells.map
         {
-            let minesAround = gridModel.minesAround(position:$0.position)
+            let AIClosedAround = gridModel.analyzeClosedAround(position:$0.position)
             
-            if (minesAround > 0)
+            if (AIClosedAround > 0)
             {
-                let regionAround = gridModel.regionAround(position: $0.position)
+                let regionAround = $0.regionAround
                 regionAround.enumerate {
                     if (!$0.isOpen() && !$0.isAIMine() && !$0.isAISafe())
                     {

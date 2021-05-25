@@ -26,6 +26,7 @@ class GridModel {
     var gameDelegate:GameStatusProtocol?
     var infoDelegate:GameInfoProtocol?
     var moveArray = [(Int, Int)]()
+    var analyzeCachedCells = [CellView]()
 
     static let shared = GridModel()
     
@@ -70,13 +71,22 @@ class GridModel {
             for y in 0...height-1 {
                 let flatPosition = x*height+y
                 let type = shuffledArray[flatPosition]
-                let cell = CellView(type: type, position: (x,y), size: 30)
-                grid[x].append(cell)
+                grid[x].append(CellView(type: type, position: (x,y), size: 30))
             }
+        }
+        
+        cacheRegionsAround()
+    }
+    
+    func cacheRegionsAround()
+    {
+        grid.enumerate { cell in
+            cell.regionAround = [[nil]]
+            cell.regionAround = regionAround(position: cell.position)
         }
     }
     
-    public func regionAround(position:(Int,Int)) -> [[CellView?]]
+    private func regionAround(position:(Int,Int)) -> [[CellView?]]
     {
         var region = [[CellView?]]()
         
@@ -100,6 +110,18 @@ class GridModel {
         let y = point.1
         let pointInsideGrid = (y >= 0 && y < grid.first!.count && x >= 0 && x < grid.count)
         return pointInsideGrid
+    }
+    
+    func optimizeAnalyzeCahceCells()
+    {
+        var iterator = analyzeCachedCells.makeIterator()
+        while let element = iterator.next() {
+            let needToAnalyze = isNeedToAnalyze(cell: element)
+            if needToAnalyze == false
+            {
+                analyzeCachedCells.remove(at: analyzeCachedCells.firstIndex(of: element)!)
+            }
+        }
     }
     
     func checkAllOpened()

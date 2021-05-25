@@ -37,12 +37,14 @@ extension GridModel
             GridModel.shared.moveArray.append(cell.position)
             infoDelegate?.updateInfo(openedCells: openedCells(), moves: GridModel.shared.moveArray)
             checkAllOpened()
+            optimizeAnalyzeCahceCells()
         }
     }
     
     public func openCell(cell:CellView) {
         let mines = minesAround(position: cell.position)
         cell.setNumberText(num: mines)
+        GridModel.shared.analyzeCachedCells.append(cell)
         GridModel.shared.moveArray.append(cell.position)
         
         if (mines == 0) {
@@ -51,6 +53,7 @@ extension GridModel
         
         infoDelegate?.updateInfo(openedCells: openedCells(), moves: GridModel.shared.moveArray)
         checkAllOpened()
+        optimizeAnalyzeCahceCells()
     }
     
     public func setFlag(cell:CellView) {

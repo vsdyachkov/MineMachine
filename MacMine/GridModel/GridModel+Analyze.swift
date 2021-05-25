@@ -12,13 +12,16 @@ extension GridModel
 {
     func isAnalyzeOpen(cell:CellView?) -> Bool
     {
-        let isOpen = cell != nil && cell!.isOpen() && !cell!.isFlag()
+        let isOpen = cell == nil ||
+            (cell!.isOpen() &&
+            !cell!.isFlag())
         return isOpen
     }
     
     public func anazlyzeOpenedAround(position:(Int,Int)) -> Int
     {
-        let region = regionAround(position: position)
+        let cell = grid[position.0][position.1]
+        let region = cell.regionAround;
         return region.flatMap { $0.filter { isAnalyzeOpen(cell:$0) } }.count
     }
     
@@ -29,8 +32,26 @@ extension GridModel
     
     public func analyzeMinesAround(position:(Int,Int)) -> Int
     {
-        let region = regionAround(position: position)
-        let mines = region.flatMap { $0.filter { $0 != nil && $0!.isAIMine() } }.count
+        let cell = grid[position.0][position.1]
+        let region = cell.regionAround;
+        let mines = region.flatMap { $0.filter { $0 != nil && ($0!.isAIMine() || $0!.isFlag()) } }.count
         return mines
+    }
+    
+    public func isNeedToAnalyze(cell:CellView) -> Bool
+    {
+        let countToOpen = cell.regionAround.flatMap { $0.filter {
+            $0 != nil &&
+            !$0!.isOpen() &&
+            !$0!.isAIMine() &&
+            !$0!.isAISafe() &&
+            !$0!.isFlag() } }.count
+        
+        var isNeedToAnalyze = true
+        if countToOpen == 0 {
+            isNeedToAnalyze = false
+        }
+        
+        return isNeedToAnalyze
     }
 }

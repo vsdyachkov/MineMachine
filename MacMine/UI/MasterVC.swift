@@ -28,6 +28,8 @@ class MasterVC: NSViewController, GameStatusProtocol, GameInfoProtocol
     @IBOutlet weak var sliderLabel: NSTextField!
     @IBOutlet weak var moveSlider: NSSliderCell!
     
+    var times = [TimeInterval]()
+    
     var percentArray = [Double]()
     var isAutoPlay:Bool = false
     
@@ -62,7 +64,7 @@ class MasterVC: NSViewController, GameStatusProtocol, GameInfoProtocol
         GridModel.shared.generate()
         
         initUI()
-        
+
         GridModel.shared.draw()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
             GridModel.shared.openZeroCell()
@@ -77,33 +79,36 @@ class MasterVC: NSViewController, GameStatusProtocol, GameInfoProtocol
     
     func AIPlay()
     {
-        Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { timer in
+        let startDate = Date()
+        
+        AIPlayer.playAnalyzed(gridModel: GridModel.shared, gameDelegate: self, infoDelegate: self)
+        
+        var hasNewActions = false
+        repeat {
+            hasNewActions = Alazyler.analyze(gridModel:GridModel.shared)
             AIPlayer.playAnalyzed(gridModel: GridModel.shared, gameDelegate: self, infoDelegate: self)
-            
-            if (Alazyler.analyze(gridModel:GridModel.shared))
-            {
-                AIPlayer.playAnalyzed(gridModel: GridModel.shared, gameDelegate: self, infoDelegate: self)
-            }
-            else
-            {
-                timer.invalidate()
-                let openedCells = GridModel.shared.openedCells()
-                let percent = Double(openedCells.0) / Double(openedCells.1) * 100.0
-                self.percentArray.append(percent)
-                let average = self.percentArray.reduce(0, { $0 + $1 }) / Double(self.percentArray.count)
-                self.averagePercentLabel.stringValue = String(format: "В среднем: %.0f %%", average)
-                self.playedGameLabel.stringValue = String(format: "Сыграно: %d", self.percentArray.count)
-                
-                if (self.isAutoPlay) {
-                    self.newGame {
-                        self.AIPlay()
-                    }
-                }
+        } while hasNewActions
+        
+        let openedCells = GridModel.shared.openedCells()
+        let percent = Double(openedCells.0) / Double(openedCells.1) * 100.0
+        self.percentArray.append(percent)
+        let average = self.percentArray.reduce(0, { $0 + $1 }) / Double(self.percentArray.count)
+        self.averagePercentLabel.stringValue = String(format: "В среднем: %.0f %%", average)
+        self.playedGameLabel.stringValue = String(format: "Сыграно: %d", self.percentArray.count)
+        
+        let elapsed = Date().timeIntervalSince(startDate)
+        self.times.append(elapsed)
+        
+        if (self.isAutoPlay) {
+            self.newGame {
+                self.AIPlay()
             }
         }
+        
+        let sumArray = self.times.reduce(0, +)
+        let avgArrayValue = sumArray / Double(self.times.count)
+        print(avgArrayValue)
     }
-    
-//    ##MARK: 2
     
     @IBAction func newGameAction(_ sender: Any) {
         newGame(){}

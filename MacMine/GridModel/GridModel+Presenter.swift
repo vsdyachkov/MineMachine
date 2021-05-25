@@ -15,10 +15,18 @@ extension GridModel
         
         // очистка от старых CellView
         
-        for currentView in (drawDelegate?.view.subviews)! {
-            if (currentView.isKind(of: CellView.self)) {
-                currentView.removeFromSuperview()
+        if let subviews = drawDelegate?.view.subviews
+        {
+            var iterator = subviews.makeIterator()
+            while let element = iterator.next() {
+                if (element.isKind(of: CellView.self)) {
+                    element.removeFromSuperview()
+                }
             }
+        }
+        else
+        {
+            return;
         }
         
         // отрисовка
@@ -50,14 +58,14 @@ extension GridModel
                     let cell = grid[x][y]
                     if (cell.textLayer.string == nil)
                     {
-                        let count = minesCountIn(region: regionAround(position: (x,y)))
+                        let count = minesCountIn(region: grid[x][y].regionAround)
                         if (cell.type == .mine) {
                             cell.setBombText()
                             gameDelegate?.gameOver(win: false)
                             return
                         } else {
                             cell.setNumberText(num: count)
-                            cell.colorLayer.backgroundColor = .clear
+                            GridModel.shared.analyzeCachedCells.append(cell)
                         }
                         if (count == 0) { openAround(position:(x,y)) }
                     }
