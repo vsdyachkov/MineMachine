@@ -1,22 +1,11 @@
 # MineMachine
 
+MineMachine - a Swift-based macOS app with an AI algorithm to open a field and detect mines
+
+The latest version of the app opens an average of 68% of the field per 1000 games
+
 OS & Tools:
 
 macOS 10.14.5 Mojave
 Xcode 10.3
-
----
-
-**21 июля 2019** 
-- Открыто поле 68% на 1000 игр
-
-**26 июля 2019**
-
-- до кеширования регионов: 1.8 сек на игру
-- после кеширования регионов: 0.86 сек на игру
-
-**29 июля 2019**
-
-- кэш ячеек для анализа
-- улучшение ИИ при игре по краям поля
 
